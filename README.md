@@ -41,7 +41,7 @@ matplotlib
 
 ```bash
 # 環境の新規構築(最初の1回だけ)
-$ python3 -m env venv
+$ python3 -m venv venv
 
 # 環境の有効化（検証環境に入るたびに実行）
 $ source venv/bin/activate
