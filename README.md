@@ -8,10 +8,11 @@
 
 ## 参考文献
 
-- [CS170 Lecture notes -- Dining Philosophers](https://sites.cs.ucsb.edu/~rich/class/cs170/notes/DiningPhil/index.html)
-- [The Little Book of Semaphores](http://alumni.cs.ucr.edu/~kishore/papers/semaphores.pdf)
+- [31.6 The Dining Philosophers - Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf#page=13)
+- [4.4 Diningphilosophers - The Little Book of Semaphores](http://alumni.cs.ucr.edu/~kishore/papers/semaphores.pdf#page=105)
   -  P.93 ~
   -  AB Downey, 2005, University of California, Riverside
+- [CS170 Lecture notes -- Dining Philosophers](https://sites.cs.ucsb.edu/~rich/class/cs170/notes/DiningPhil/index.html)
 - [Parallel Programming (Carnegie Mellon University)](https://compeau.cbd.cmu.edu/wp-content/uploads/2016/08/lec_23.pdf)
 - [Principles of Operating Systems (UC Irvine)](https://ics.uci.edu/~ardalan/courses/os/lectures/os_lecture_4.pdf)
 
