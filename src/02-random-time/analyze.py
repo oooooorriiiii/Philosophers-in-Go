@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from datetime import timedelta
 
 log_file = "action.log"
 
@@ -29,11 +28,13 @@ data = pd.DataFrame({
 
 action_colors = {
     "thinking": "#812990",
+    "waiting for forks": "#f19db5",
     "eating": "#5eb954",
     "finished eating": "#7cc7e8"
 }
 
 data["Color"] = data["Action"].map(action_colors)
+data = data[data["Color"].notnull()]
 
 plt.figure(figsize=(14, 6))
 
@@ -42,6 +43,12 @@ for philosopher in data["Philosopher"].unique():
     for i in range(len(subset) - 1):
         start_time = subset.iloc[i]["Timestamp"]
         end_time = subset.iloc[i + 1]["Timestamp"]
+        action = subset.iloc[i]["Action"]
+        color = subset.iloc[i]["Color"]
+
+        if color is None or not isinstance(color, str):
+            raise ValueError(f"Invalid color for action '{action}' at index {i}")
+
         if subset.iloc[i]["Action"] == "finished eating":
             plt.plot(start_time, philosopher, 'o', color=subset.iloc[i]["Color"], markersize=10)
         else:
@@ -51,7 +58,7 @@ for philosopher in data["Philosopher"].unique():
                 xmax=end_time,
                 colors=subset.iloc[i]["Color"],
                 linewidth=6,
-                label=subset.iloc[i]["Action"] if i == 0 else None
+                label=action if i == 0 else None
             )
     # last "finished eating"
     last_row = subset.iloc[-1]

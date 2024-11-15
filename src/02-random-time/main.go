@@ -14,9 +14,10 @@ type Philosopher struct {
 
 func (p *Philosopher) dine(wg *sync.WaitGroup) {
 	defer wg.Done()
-	// 3回 "考える" -> "食べる" が終了したら終了
+	// 3 cycles of  "thinking" -> "waiting" -> "eating"
 	for i := 0; i < 3; i++ {
 		p.think()
+		p.waitForForks() // In 42, We express it as "sleep"
 		p.eat()
 	}
 }
@@ -27,7 +28,10 @@ func (p *Philosopher) think() {
 	time.Sleep(time.Millisecond * thinkUnitTime)
 }
 
-func (p *Philosopher) eat() {
+func (p *Philosopher) waitForForks() {
+	logAction(p.id, "waiting for forks")
+	waitStart := time.Now()
+
 	if p.id%2 == 0 {
 		// Odd philosophers pick the left fork first
 		p.rightFork.Lock()
@@ -38,6 +42,11 @@ func (p *Philosopher) eat() {
 		p.rightFork.Lock()
 	}
 
+	waitDuration := time.Since(waitStart)
+	logAction(p.id, fmt.Sprintf("acquired forks after waiting %.3fs", waitDuration.Seconds()))
+}
+
+func (p *Philosopher) eat() {
 	logAction(p.id, "eating")
 	eatUnitTime := time.Duration(10 * rand.Intn(10))
 	time.Sleep(time.Millisecond * eatUnitTime)
