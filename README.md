@@ -27,7 +27,7 @@ $ go run .
 analyze.pyにいれるlogファイルの出力
 
 ```bash
-$ go run . > actions.log # ファイル名はactions.logで固定です
+$ go run . > action.log # ファイル名はaction.logで固定です
 ```
 
 ### `analyze.py`の実行
