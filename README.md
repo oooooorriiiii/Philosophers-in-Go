@@ -8,6 +8,7 @@
 
 ## 参考文献
 
+- [CS170 Lecture notes -- Dining Philosophers](https://sites.cs.ucsb.edu/~rich/class/cs170/notes/DiningPhil/index.html)
 - [The Little Book of Semaphores](http://alumni.cs.ucr.edu/~kishore/papers/semaphores.pdf)
   -  P.93 ~
   -  AB Downey, 2005, University of California, Riverside
