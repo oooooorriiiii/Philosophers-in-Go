@@ -29,6 +29,17 @@ Philosopherは左右のリソース（Fork）が使われていないときに�
 
 ## 実装について
 
+### 概要
+
+- 哲学者の食事時間`eat()`と考える時間`think()`を設定し、それぞれの間に`waitForForks()`を挟んでいます。
+  - 一般的なDishing Philosophers Problemの実装では以下のようになっています
+    - `食事時間: 可変` -> `それ以外の時間（考える時間）: 可変`
+    - Forkを持っていない時間はすべて考える時間としています
+  - 42の課題では以下のようになっています
+    - `食事時間: 固定` -> `考える時間: 可変` -> `睡眠: 固定` -> ...
+    - 本実装ではこの方式で実装しています
+
+
 ### デッドロック防止
 
 概要-解決方法の例で説明したように以下の手法でデッドロックを回避します
@@ -38,7 +49,10 @@ Philosopherは左右のリソース（Fork）が使われていないときに�
   - 偶数番号の哲学者は左→右の順番にフォークを取る
 
 ```go
-func (p *Philosopher) eat() {
+func (p *Philosopher) think() {
+	logAction(p.id, "thinking (waiting for forks)")
+	waitStart := time.Now()
+
 	if p.id%2 == 0 {
 		// Odd philosophers pick the left fork first
 		p.rightFork.Lock()
@@ -52,7 +66,7 @@ func (p *Philosopher) eat() {
 }
 ```
 
-### 利用機能
+### Go言語の利用機能
 
 - `sync.Mutex`
   - 排他制御を行なうためにリソースをロックするための機能

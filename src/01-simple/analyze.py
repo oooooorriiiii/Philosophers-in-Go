@@ -27,9 +27,9 @@ data = pd.DataFrame({
 })
 
 action_colors = {
-    "thinking": "#812990",
-    "waiting for forks": "#f19db5",
+    "thinking (wait for forks)": "#812990",
     "eating": "#5eb954",
+    "sleeping": "#f19db5",
     "finished eating": "#7cc7e8"
 }
 

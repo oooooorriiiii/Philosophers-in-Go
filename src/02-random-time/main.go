@@ -14,22 +14,21 @@ type Philosopher struct {
 
 func (p *Philosopher) dine(wg *sync.WaitGroup) {
 	defer wg.Done()
-	// 3 cycles of  "thinking" -> "waiting" -> "eating"
 	for i := 0; i < 3; i++ {
 		p.think()
-		p.waitForForks() // In 42, We express it as "sleep"
 		p.eat()
+		p.sleep()
 	}
 }
 
-func (p *Philosopher) think() {
-	logAction(p.id, "thinking")
-	thinkUnitTime := time.Duration(10 * rand.Intn(10))
-	time.Sleep(time.Millisecond * thinkUnitTime)
+func (p *Philosopher) sleep() {
+	logAction(p.id, "sleeping")
+	sleepUnitTime := time.Duration(10 * rand.Intn(10))
+	time.Sleep(time.Millisecond * sleepUnitTime)
 }
 
-func (p *Philosopher) waitForForks() {
-	logAction(p.id, "waiting for forks")
+func (p *Philosopher) think() {
+	logAction(p.id, "thinking (wait for forks)")
 	waitStart := time.Now()
 
 	if p.id%2 == 0 {
