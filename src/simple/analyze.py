@@ -40,14 +40,23 @@ plt.figure(figsize=(14, 6))
 for philosopher in data["Philosopher"].unique():
     subset = data[data["Philosopher"] == philosopher]
     for i in range(len(subset) - 1):
-        plt.hlines(
-            y=philosopher,
-            xmin=subset.iloc[i]["Timestamp"],
-            xmax=subset.iloc[i + 1]["Timestamp"],
-            colors=subset.iloc[i]["Color"],
-            linewidth=6,
-            label=subset.iloc[i]["Action"] if i == 0 else None
-        )
+        start_time = subset.iloc[i]["Timestamp"]
+        end_time = subset.iloc[i + 1]["Timestamp"]
+        if subset.iloc[i]["Action"] == "finished eating":
+            plt.plot(start_time, philosopher, 'o', color=subset.iloc[i]["Color"], markersize=10)
+        else:
+            plt.hlines(
+                y=philosopher,
+                xmin=start_time,
+                xmax=end_time,
+                colors=subset.iloc[i]["Color"],
+                linewidth=6,
+                label=subset.iloc[i]["Action"] if i == 0 else None
+            )
+    # last "finished eating"
+    last_row = subset.iloc[-1]
+    if last_row["Action"] == "finished eating":
+        plt.plot(last_row["Timestamp"], philosopher, 'o', color=last_row["Color"], markersize=10)
 
 legend_handles = [plt.Line2D([0], [0], color=color, lw=6, label=action) for action, color in action_colors.items()]
 plt.legend(handles=legend_handles, title="Actions", loc="upper left", bbox_to_anchor=(1, 1))
