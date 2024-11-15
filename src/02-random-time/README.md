@@ -1,7 +1,18 @@
 ## Random
 
-"think", "eat"の時間をランダムにしてみた。
-どのような動作をするだろうか…
+"think", "eat"の時間をランダムにしてみました。
+
+```go
+	thinkUnitTime := time.Duration(10 * rand.Intn(10))
+	time.Sleep(time.Millisecond * thinkUnitTime)
+```
+
+```go
+	eatUnitTime := time.Duration(10 * rand.Intn(10))
+	time.Sleep(time.Millisecond * eatUnitTime)
+```
+
+どのような動作をするでしょうか…
 
 ## 結果
 
