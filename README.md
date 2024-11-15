@@ -1,4 +1,8 @@
+# Dining philosophers problem
 
+> In computer science, the dining philosophers problem is an example problem often used in concurrent algorithm design to illustrate synchronization issues and techniques for resolving them. - Wikipedia
+
+![Dining_philosophers_diagram](https://github.com/user-attachments/assets/9f43aaad-fcd4-4d3a-a9c8-615b05762d2f)
 
 
 ## `analyze.py`の実行
