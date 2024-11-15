@@ -36,3 +36,9 @@ func main () {
 	}
 }
 ```
+
+## 結果
+
+![Result: deadlock prevention 5 Philos](static/Figure_1.png)
+
+Philosopherは左右のリソース（Fork）が使われていないときにしか食事（"eat"）ができていないことがわかりますね。
