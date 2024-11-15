@@ -21,7 +21,7 @@ func (p *Philosopher) dine(wg *sync.WaitGroup) {
 }
 
 func (p *Philosopher) think() {
-	fmt.Printf("Philosopher %d is thinking...\n", p.id)
+	logAction(p.id, "thinking")
 	time.Sleep(time.Millisecond * 100)
 }
 
@@ -36,12 +36,16 @@ func (p *Philosopher) eat() {
 		p.rightFork.Lock()
 	}
 
-	fmt.Printf("Philosopher %d is eating...\n", p.id)
+	logAction(p.id, "eating")
 	time.Sleep(time.Millisecond * 100)
 
 	p.leftFork.Unlock()
 	p.rightFork.Unlock()
-	fmt.Printf("Philosopher %d has finished eating.\n", p.id)
+	logAction(p.id, "finished eating")
+}
+
+func logAction(id int, action string) {
+	fmt.Printf("[%s] Philosopher %d is %s\n", time.Now().Format("15:04:05.000"), id, action)
 }
 
 func main() {
