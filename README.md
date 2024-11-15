@@ -24,6 +24,12 @@
 $ go run .
 ```
 
+analyze.pyにいれるlogファイルの出力
+
+```bash
+$ go run . > actions.log # ファイル名はactions.logで固定です
+```
+
 ### `analyze.py`の実行
 
 必要ライブラリ
