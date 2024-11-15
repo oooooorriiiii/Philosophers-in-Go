@@ -5,7 +5,26 @@
 ![Dining_philosophers_diagram](https://github.com/user-attachments/assets/9f43aaad-fcd4-4d3a-a9c8-615b05762d2f)
 
 
-## `analyze.py`の実行
+
+## 参考文献
+
+- [The Little Book of Semaphores](http://alumni.cs.ucr.edu/~kishore/papers/semaphores.pdf)
+  -  P.93 ~
+  -  AB Downey, 2005, University of California, Riverside
+- [Parallel Programming (Carnegie Mellon University)](https://compeau.cbd.cmu.edu/wp-content/uploads/2016/08/lec_23.pdf)
+- [Principles of Operating Systems (UC Irvine)](https://ics.uci.edu/~ardalan/courses/os/lectures/os_lecture_4.pdf)
+
+## その他
+
+### `main.go`の実行
+
+`main.go`のあるディレクトリで以下を実行
+
+```bash
+$ go run .
+```
+
+### `analyze.py`の実行
 
 必要ライブラリ
 
@@ -30,11 +49,3 @@ $ python3 analyze.py
 # 環境から抜ける（検証環境に入るたびに実行）
 $ deactivate
 ```
-
-## 参考文献
-
-- [The Little Book of Semaphores](http://alumni.cs.ucr.edu/~kishore/papers/semaphores.pdf)
-  -  P.93 ~
-  -  AB Downey, 2005, University of California, Riverside
-- [Parallel Programming (Carnegie Mellon University)](https://compeau.cbd.cmu.edu/wp-content/uploads/2016/08/lec_23.pdf)
-- [Principles of Operating Systems (UC Irvine)](https://ics.uci.edu/~ardalan/courses/os/lectures/os_lecture_4.pdf)
