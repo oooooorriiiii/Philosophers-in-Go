@@ -36,6 +36,21 @@ Philosopherは左右のリソース（Fork）が使われていないときに�
   - 奇数番号の哲学者は右→左の順番にフォークを取る
   - 偶数番号の哲学者は左→右の順番にフォークを取る
 
+```go
+func (p *Philosopher) eat() {
+	if p.id%2 == 0 {
+		// Odd philosophers pick the left fork first
+		p.rightFork.Lock()
+		p.leftFork.Lock()
+	} else {
+		// Even philosophers pick the right fork first
+		p.leftFork.Lock()
+		p.rightFork.Lock()
+	}
+    ...
+}
+```
+
 ### 利用機能
 
 - `sync.Mutex`
